@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Strings related to toolbars  -->
+    // Title on toolbar of MyStocksActivity
+    <string name="app_name" translatable="false">Stock Hawk</string>
+
+    // Title on toolbar of MyStocksChart
+    <string name="stock_detail" translatable="false">Stock Hawk Chart</string>
+
+    // Title on toolbar of widget
+    <string name="title_widget" translatable="false">Stock Hawk</string>
+
+    <!-- Strings related to main UI  -->
+    // Content description for the floating button in MyStocksActivity for adding new stock
+    <string name="fab">Add new stock</string>
+    // Messages shown when network is not available
+    <string name="empty_stock_list">No stock information available. The network is not available.</string>
+    <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+    // Stock detail shown below the chart in MyStocksChart
+    <string name="gridlayout_symbol">Stock Symbol</string>
+    <string name="gridlayout_bid_price">Current Bid Price</string>
+    <string name="gridlayout_percent_change">Percent Change</string>
+
+    <!-- Strings related to stock chart activity -->
+    <string name="chart_empty">No stock information available. The network is not available.</string>
+
+    <!-- Strings related to settings  -->
+    <string name="action_settings">Settings</string>
+    <string name="action_change_units">Change Units</string>
+    <string name="menu_refresh">Refresh</string>
+
+    <!-- Strings related to dialog box  -->
+    // Title of the dialog box for adding new stock symbol
+    <string name="symbol_search">Symbol Search</string>
+    // Message of the dialog box for adding new stock symbol
+    <string name="content_test">Search for a Stock Symbol</string>
+    // Input hint to help user
+    <string name="input_hint" translatable="false">FB</string>
+    <string name="input_prefill"></string>
+    // Invalid stock symbol
+    <string name="invalid_symbol">INVALID STOCK SYMBOL</string>
+
+    <!-- Strings related to widget  -->
+    <string name="add_widget">Add widget</string>
+
+</resources>
+
