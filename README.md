@@ -9,4 +9,4 @@ Stock Hawk is an app that finds stock prices from the internet and lets users sa
 * Save stocks for future tracking
 
 ## Screenshots
-https://cloud.githubusercontent.com/assets/18376526/18152980/e2b534d2-6f95-11e6-975e-375bd69d5f6c.png
+![Screenshot01](https://cloud.githubusercontent.com/assets/18376526/18152980/e2b534d2-6f95-11e6-975e-375bd69d5f6c.png)
