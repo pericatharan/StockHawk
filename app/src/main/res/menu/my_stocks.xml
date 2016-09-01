@@ -8,7 +8,7 @@
       android:orderInCategory="99"
       app:showAsAction="always"/>
   <item android:id="@+id/menu_refresh"
-      android:showAsAction="never"
+      app:showAsAction="never"
       android:title="@string/menu_refresh" />
   <item android:id="@+id/action_settings"
       android:title="@string/action_settings"
