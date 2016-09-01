@@ -12,7 +12,10 @@ import android.support.v7.widget.RecyclerView;
  * for the CursorRecyclerViewApater.java code and idea.
  */
 public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH>{
+
   private static final String LOG_TAG = CursorRecyclerViewAdapter.class.getSimpleName();
+  private static final String COLUMN_ID = "_id";
+
   private Cursor mCursor;
   private boolean dataIsValid;
   private int rowIdColumn;
@@ -20,7 +23,7 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
   public CursorRecyclerViewAdapter(Context context, Cursor cursor){
     mCursor = cursor;
     dataIsValid = cursor != null;
-    rowIdColumn = dataIsValid ? mCursor.getColumnIndex("_id") : -1;
+    rowIdColumn = dataIsValid ? mCursor.getColumnIndex(COLUMN_ID) : -1;
     mDataSetObserver = new NotifyingDataSetObserver();
     if (dataIsValid){
       mCursor.registerDataSetObserver(mDataSetObserver);
@@ -77,7 +80,7 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
       if (mDataSetObserver != null){
         mCursor.registerDataSetObserver(mDataSetObserver);
       }
-      rowIdColumn = newCursor.getColumnIndexOrThrow("_id");
+      rowIdColumn = newCursor.getColumnIndexOrThrow(COLUMN_ID);
       dataIsValid = true;
       notifyDataSetChanged();
     }else{
