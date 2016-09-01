@@ -16,14 +16,15 @@
     // Messages shown when network is not available
     <string name="empty_stock_list">No stock information available. The network is not available.</string>
     <string name="network_toast">Uh-oh! This app requires an internet connection</string>
-    // Stock detail shown below the chart in MyStocksChart
-    <string name="gridlayout_symbol">Stock Symbol</string>
-    <string name="gridlayout_bid_price">Current Bid Price</string>
-    <string name="gridlayout_percent_change">Percent Change</string>
+    <string name="already_added">This stock is already saved!</string>
 
     <!-- Strings related to stock chart activity -->
     <string name="chart_empty">No stock information available. The network is not available.</string>
     <string name="linechart">Graph of stock prices against time</string>
+    // Stock detail shown below the chart in MyStocksChart
+    <string name="gridlayout_symbol">Stock Symbol</string>
+    <string name="gridlayout_bid_price">Current Bid Price</string>
+    <string name="gridlayout_percent_change">Percent Change</string>
 
     <!-- Strings related to settings  -->
     <string name="action_settings">Settings</string>
