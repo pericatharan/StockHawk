@@ -18,7 +18,8 @@ import net.simonvt.schematic.annotation.TableEndpoint;
 public class QuoteProvider {
 
   public static final String AUTHORITY = "com.sam_chordas.android.stockhawk.data.QuoteProvider";
-  static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
+  public static final String PROTOCOL = "content://";
+  static final Uri BASE_CONTENT_URI = Uri.parse(PROTOCOL + AUTHORITY);
 
   interface Path{
     String QUOTES = "quotes";
