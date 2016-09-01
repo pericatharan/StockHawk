@@ -23,6 +23,7 @@
 
     <!-- Strings related to stock chart activity -->
     <string name="chart_empty">No stock information available. The network is not available.</string>
+    <string name="linechart">Graph of stock prices against time</string>
 
     <!-- Strings related to settings  -->
     <string name="action_settings">Settings</string>
