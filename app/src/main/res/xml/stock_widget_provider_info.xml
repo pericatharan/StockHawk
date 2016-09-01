@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="180dp"
-    android:minHeight="40dp"
-    android:updatePeriodMillis="86400000"
-    android:previewImage="@drawable/example_appwidget_preview"
-    android:initialLayout="@layout/stock_widget_provider"
+    android:initialKeyguardLayout="@layout/stock_widget_container"
+    android:initialLayout="@layout/stock_widget_container"
+    android:minHeight="110dp"
+    android:minWidth="250dp"
+    android:previewImage="@drawable/stock_hawk_widget"
     android:resizeMode="horizontal|vertical"
-    android:widgetCategory="home_screen"
-    android:initialKeyguardLayout="@layout/stock_widget_provider">
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen">
+
 </appwidget-provider>
