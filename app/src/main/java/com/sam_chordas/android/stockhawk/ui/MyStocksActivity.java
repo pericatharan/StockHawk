@@ -45,9 +45,14 @@ import com.sam_chordas.android.stockhawk.widget.StockWidgetProvider;
 public class MyStocksActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
-  static final String STOCK_SYMBOL = "stock_symbol";
-  static final String BID_PRICE = "bid_price";
-  static final String PERCENT_CHANGE = "percent_change";
+  public static final String STOCK_SYMBOL = "stock_symbol";
+  public static final String BID_PRICE = "bid_price";
+  public static final String PERCENT_CHANGE = "percent_change";
+  private static final String SERVICE_INTENT_TAG = "tag";
+  private static final String SERVICE_INTENT_INIT = "init";
+  private static final String SERVICE_INTENT_ADD = "add";
+  private static final String SERVICE_INTENT_SYMBOL = "symbol";
+  private static final String PERIODIC_TAG = "periodic";
 
   /**
    * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -97,7 +102,7 @@ public class MyStocksActivity extends AppCompatActivity implements
 
       mServiceIntent = new Intent(this, StockIntentService.class);
       if (savedInstanceState == null) {
-        mServiceIntent.putExtra("tag", "init");
+        mServiceIntent.putExtra(SERVICE_INTENT_TAG, SERVICE_INTENT_INIT);
         startService(mServiceIntent);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -146,15 +151,15 @@ public class MyStocksActivity extends AppCompatActivity implements
                                 new String[]{input.toString().toUpperCase()}, null);
                         if (c.getCount() != 0) {
                           Toast toast =
-                                  Toast.makeText(MyStocksActivity.this, "This stock is already saved!",
+                                  Toast.makeText(MyStocksActivity.this, getString(R.string.already_added),
                                           Toast.LENGTH_LONG);
                           toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
                           toast.show();
                           return;
                         } else {
                           // Add the stock to DB
-                          mServiceIntent.putExtra("tag", "add");
-                          mServiceIntent.putExtra("symbol", input.toString().toUpperCase());
+                          mServiceIntent.putExtra(SERVICE_INTENT_TAG, SERVICE_INTENT_ADD);
+                          mServiceIntent.putExtra(SERVICE_INTENT_SYMBOL, input.toString().toUpperCase());
                           startService(mServiceIntent);
                         }
                       }
@@ -175,7 +180,7 @@ public class MyStocksActivity extends AppCompatActivity implements
       if (isConnected){
         long period = 3600L;
         long flex = 10L;
-        String periodicTag = "periodic";
+        //String periodicTag = "periodic";
 
         // create a periodic task to pull stocks once every hour after the app has been opened. This
         // is so Widget data stays up to date.
@@ -183,7 +188,7 @@ public class MyStocksActivity extends AppCompatActivity implements
                 .setService(StockTaskService.class)
                 .setPeriod(period)
                 .setFlex(flex)
-                .setTag(periodicTag)
+                .setTag(PERIODIC_TAG)
                 .setRequiredNetwork(Task.NETWORK_STATE_CONNECTED)
                 .setRequiresCharging(false)
                 .build();

@@ -27,7 +27,12 @@ import java.util.List;
 
 public class MyStocksChart extends AppCompatActivity {
 
-    private String LOG_TAG = MyStocksActivity.class.getSimpleName();
+    private static final String LOG_TAG = MyStocksActivity.class.getSimpleName();
+    private static final String SERVICE_INTENT_TAG = "tag";
+    private static final String SERVICE_INTENT_HISTORICAL = "historical";
+    private static final String SERVICE_INTENT_STOCK_SYMBOL = "stock_symbol";
+    private static final String BROADCAST_RECEIVER_JSON = "JSON";
+    private static final String INTENT_FILTER = "Results_From_JSON";
 
     private List<StockHistory> stockHistoryRetrieved;
     private String selectedStock;
@@ -75,8 +80,8 @@ public class MyStocksChart extends AppCompatActivity {
 
             // Start service intent and passing symbol of selected stock
             mServiceIntent = new Intent(this, StockIntentService.class);
-            mServiceIntent.putExtra("tag", "historical");
-            mServiceIntent.putExtra("stock_symbol", selectedStock);
+            mServiceIntent.putExtra(SERVICE_INTENT_TAG, SERVICE_INTENT_HISTORICAL);
+            mServiceIntent.putExtra(SERVICE_INTENT_STOCK_SYMBOL, selectedStock);
             startService(mServiceIntent);
 
             stockSymbolTextView.setText(selectedStock);
@@ -93,7 +98,7 @@ public class MyStocksChart extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
 
             stockHistoryRetrieved = new ArrayList<StockHistory>();
-            stockHistoryRetrieved = intent.getParcelableArrayListExtra("JSON");
+            stockHistoryRetrieved = intent.getParcelableArrayListExtra(BROADCAST_RECEIVER_JSON);
 
             showLineChart();
 
@@ -156,7 +161,7 @@ public class MyStocksChart extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver, new IntentFilter("Results_From_JSON"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver, new IntentFilter(INTENT_FILTER));
     }
 
     protected void onPause() {
