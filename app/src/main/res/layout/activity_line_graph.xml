@@ -15,7 +15,8 @@
             android:id="@+id/linechart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/material_white" />
+            android:background="@color/material_white"
+            android:contentDescription="@string/linechart" />
 
         <TextView
             android:id="@+id/chart_empty"
