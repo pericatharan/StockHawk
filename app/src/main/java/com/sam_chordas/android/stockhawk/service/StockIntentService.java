@@ -19,6 +19,13 @@ import java.util.List;
  */
 public class StockIntentService extends IntentService {
 
+  private static final String SERVICE_INTENT_TAG = "tag";
+  private static final String SERVICE_INTENT_ADD = "add";
+  private static final String SERVICE_INTENT_SYMBOL = "symbol";
+  private static final String SERVICE_INTENT_HISTORICAL = "historical";
+  private static final String SERVICE_INTENT_CHART_SYMBOL = "chart_symbol";
+  private static final String SERVICE_INTENT_STOCK_SYMBOL = "stock_symbol";
+
   public StockIntentService(){
     super(StockIntentService.class.getName());
   }
@@ -32,16 +39,16 @@ public class StockIntentService extends IntentService {
     StockTaskService stockTaskService = new StockTaskService(this);
     Bundle args = new Bundle();
 
-    if (intent.getStringExtra("tag").equals("add")){
-      args.putString("symbol", intent.getStringExtra("symbol"));
-    } else if (intent.getStringExtra("tag").equals("historical")) {
-      args.putString("chart_symbol", intent.getStringExtra("stock_symbol"));
+    if (intent.getStringExtra(SERVICE_INTENT_TAG).equals(SERVICE_INTENT_ADD)){
+      args.putString(SERVICE_INTENT_SYMBOL, intent.getStringExtra(SERVICE_INTENT_SYMBOL));
+    } else if (intent.getStringExtra(SERVICE_INTENT_TAG).equals(SERVICE_INTENT_HISTORICAL)) {
+      args.putString(SERVICE_INTENT_CHART_SYMBOL, intent.getStringExtra(SERVICE_INTENT_STOCK_SYMBOL));
     }
 
     // We can call OnRunTask from the intent service to force it to run immediately instead of
     // scheduling a task.
     try {
-      stockTaskService.onRunTask(new TaskParams(intent.getStringExtra("tag"), args));
+      stockTaskService.onRunTask(new TaskParams(intent.getStringExtra(SERVICE_INTENT_TAG), args));
     } catch (NumberFormatException e) {
       // Inform user of invalid stock symbol added
       // Idea of using handler taken from StackOverflow.com
